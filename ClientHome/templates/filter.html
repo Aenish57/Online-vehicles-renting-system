@@ -1,0 +1,19 @@
+      <p>Home | <b>All vehicles</b></p>
+      <div class="border-bottom pb-2 ml-2">
+        <h4 id="burgundy">Filters</h4>
+
+      </div>
+      <div class="py-1 border-bottom ml-2">
+        <h6 class="font-weight-bold mb-2">Categories</h6>
+        <div id="orange"><span class="fa fa-minus"></span></div>
+        <form method='POST' action='{% url 'Search' %}'>
+          {% csrf_token %}
+          {% for category in categories %}
+              <div class='form-group d-flex align-items-center justify-content-between'>
+                <label for="{{category}}">{{category}}</label>
+                <input type="radio" id="{{category}}" name="q" value="{{category}}">
+              </div>
+          {% endfor %}
+          <button type="submit">Apply filter</button>
+        </form>
+      </div>

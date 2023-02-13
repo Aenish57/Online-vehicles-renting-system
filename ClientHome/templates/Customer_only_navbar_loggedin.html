@@ -1,0 +1,114 @@
+{% comment %} loading static assest like images and css {% endcomment %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/> 
+
+    <!-- Tab Logo -->
+    <link rel="icon" href="{% static 'img/Logos/TabTop2Logo.png' %}" type="image/gif" sizes="18x18">
+
+    <title>Al in one Rentals - {% block title %}{% endblock %}</title>
+   
+
+</head>
+<style>
+    .navbar-nav > li{
+        padding-left:10px;
+        padding-right:10px;
+</style>
+
+<body  class="font-sans antialiased text-white-900 leading-normal tracking-wider bg-cover" style="background-image:url('https://source.unsplash.com/1L71sPT5XKc'); color: white;">
+    {% comment %} navbar from bootstrap {% endcomment %}
+    <div class="navbar sticky-top navbar-expand-lg navbar-light" style="font-size: larger;" aria-label="" aria-labbelledby="">
+        {% comment %} <a href="/Home"><img class="rounded-circle" src="{% static 'img/Logos/ChoiceNepal.png' %}" height="60"></a> {% endcomment %}
+        
+        
+        {% comment %} <a href="/Home"><img class="navbar-brand" src="{% static 'img/Logos/ChoiceNepal.png' %}" height="60"></a> {% endcomment %}
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" >
+                <li class="nav-item">
+                    <a class="nav-link" style="color: Orange" href="/Home">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link"style="color: Orange"  href="/SentRequests">Sent Requests</a>
+                </li>
+            </ul>
+            
+
+
+             <!--Buttons on right side-->
+             <ul class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-item" style="color: Orange" href="/Profile" title="Your Profile">
+                        <img class="rounded-circle" src="{{customer.customer_license.url}}" style="width: 100px;"   "border-radius: 60px 20px;">
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-item" style="color: Orange" href="/Logout">
+                        Logout</a>
+                </li>
+            </ul>
+            <!--Buttons on right side-->
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <!--Rendering contain from other pages-->
+        {% block pagecontent %} {% endblock pagecontent %}
+    </div>
+    <script>
+		{% comment %} Init tooltips {% endcomment %}
+		tippy('.link',{
+		  placement: 'bottom'
+		})
+
+		{% comment %} Toggle mode {% endcomment %}
+		const toggle = document.querySelector('.js-change-theme');
+		const body = document.querySelector('body');
+		const profile = document.getElementById('profile');
+		
+		
+		toggle.addEventListener('click', () => {
+
+		  if (body.classList.contains('text-white-700')) {
+			toggle.innerHTML = "☀️";
+			body.classList.remove('text-white-700');
+			body.classList.add('text-whitegray-100');
+			profile.classList.remove('bg-white');
+			profile.classList.add('bg-white-700');
+		  } else
+		  {
+			toggle.innerHTML = "🌙";
+			body.classList.remove('text-white-100');
+			body.classList.add('text-white-700');
+			profile.classList.remove('bg-white-700');			
+			profile.classList.add('bg-white');
+			
+		  }
+		});
+		
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+</body>
+
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Online vehicle rental services</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      href="{% static 'img/Logos/TabTop2Logo.png' %}"
+      type="image/gif"
+      sizes="18x18"
+    />
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: "Josefin Sans", sans-serif;
+      box-sizing: border-box;
+    }
+    .hero {
+      background-image: url(../static/img/Logos/marcus.jpg);
+      height: 100vh;
+      width: 100%;
+
+      background-size: cover;
+      background-position: center;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 45px;
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+    .logo {
+      color: white;
+      font-size: 35px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    span {
+      color: #f67b08;
+    }
+    nav ul li {
+      list-style-type: none;
+      display: inline-block;
+      padding: 10px 25px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+    nav ul li a:hover {
+      color: #f67b08;
+      transition: 0.4s;
+    }
+    .btn {
+      background-color: #f67b08;
+      color: white;
+      text-decoration: none;
+      border: 2px solid transparent;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: transform 0.4s;
+    }
+    .btn:hover {
+      transform: scale(1.2);
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 8%;
+      transform: translateY(-50%);
+    }
+    h1 {
+      color: white;
+      margin: 20px 0px 20px;
+      font-size: 75px;
+    }
+    h3 {
+      color: white;
+      font-size: 25px;
+      margin-bottom: 50px;
+    }
+    h4 {
+      color: #fcfc;
+      letter-spacing: 2px;
+      font-size: 20px;
+    }
+    .newslatter form {
+      width: 380px;
+      max-width: 100%;
+      position: relative;
+    }
+    .newslatter form input:first-child {
+      display: inline-block;
+      width: 100%;
+      padding: 14px 130px 14px 15px;
+      border: 2px solid #f67b08;
+      outline: none;
+      border-radius: 30px;
+    }
+    .newslatter form input:last-child {
+      position: absolute;
+      display: inline-block;
+      outline: none;
+      border: none;
+      padding: 10px 30px;
+      border-radius: 30px;
+      background-color: #f67b08;
+      color: white;
+      box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
+      top: 6px;
+      right: 6px;
+    }
+
+    .about {
+      width: 100%;
+      padding: 100px 0px;
+      background-color: #191919;
+    }
+    .about img {
+      height: auto;
+      width: 430px;
+    }
+    .about-text {
+      width: 550px;
+    }
+    .main {
+      width: 1130px;
+      max-width: 95%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .about-text h2 {
+      color: white;
+      font-size: 75px;
+      text-transform: capitalize;
+      margin-bottom: 20px;
+    }
+    .about-text h5 {
+      color: white;
+      letter-spacing: 2px;
+      font-size: 22px;
+      margin-bottom: 25px;
+      text-transform: capitalize;
+    }
+    .about-text p {
+      color: #fcfc;
+      letter-spacing: 1px;
+      line-height: 28px;
+      font-size: 18px;
+      margin-bottom: 45px;
+    }
+    button {
+      background-color: #f67b08;
+      color: white;
+      text-decoration: none;
+      border: 2px solid transparent;
+      font-weight: bold;
+      padding: 13px 30px;
+      border-radius: 30px;
+      transition: 0.4s;
+    }
+    button:hover {
+      background-color: transparent;
+      border: 2px solid #f67b08;
+      cursor: pointer;
+    }
+
+    .service {
+      background: #101010;
+      width: 100%;
+      padding: 100px 0px;
+    }
+    .title h2 {
+      color: white;
+      font-size: 75px;
+      width: 1130px;
+      margin: 30px auto;
+      text-align: center;
+    }
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+    .card {
+      height: 365px;
+      width: 335px;
+      padding: 20px 35px;
+      background: #191919;
+      border-radius: 20px;
+      margin: 15px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .card i {
+      font-size: 50px;
+      display: block;
+      text-align: center;
+      margin: 25px 0px;
+      color: #f67b08;
+    }
+    h5 {
+      color: white;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+    .pra p {
+      color: #fcfc;
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 25px;
+    }
+    .card .button {
+      background-color: #f67b08;
+      color: white;
+      text-decoration: none;
+      border: 2px solid transparent;
+      font-weight: bold;
+      padding: 9px 22px;
+      border-radius: 30px;
+      transition: 0.4s;
+    }
+    .card .button:hover {
+      background-color: transparent;
+      border: 2px solid #f67b08;
+      cursor: pointer;
+    }
+    .contact-me {
+      width: 100%;
+      height: 290px;
+      background: #191919;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contact-me p {
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+    .contact-me .button-two {
+      background-color: #f67b08;
+      color: white;
+      text-decoration: none;
+      border: 2px solid transparent;
+      font-weight: bold;
+      padding: 13px 30px;
+      border-radius: 30px;
+      transition: 0.4s;
+    }
+    .contact-me .button-two:hover {
+      background-color: transparent;
+      border: 2px solid #f67b08;
+      cursor: pointer;
+    }
+    footer {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: #101010;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    footer p:nth-child(1) {
+      font-size: 30px;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    footer p:nth-child(2) {
+      color: white;
+      font-size: 17px;
+      width: 500px;
+      text-align: center;
+      line-height: 26px;
+    }
+    .social {
+      display: flex;
+    }
+    .social a {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f67b08;
+      border-radius: 50%;
+      margin: 22px 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    .social a:hover {
+      transform: scale(1.3);
+      transition: 0.3s;
+    }
+    .end {
+      position: absolute;
+      color: #f67b08;
+      bottom: 35px;
+      font-size: 14px;
+    }
+  </style>
+  <body>
+    <!---hero Section start-->
+
+    <div class="hero">
+      <nav>
+        <h2 class="logo">Choice<span>nepal</span></h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="about">About Us</a></li>
+        </ul>
+        <a href="/register" class="btn">Signup</a>
+        <a href="signin" class="btn">Signin</a>
+      </nav>
+
+      <div class="content">
+        <h4>Welcome to</h4>
+        <h1>Choice nepal <span>rental service</span></h1>
+        <h3>Connecting you to the biggest brands in vehicles rental.</h3>
+        
+      </div>
+    </div>
+
+    <!--About section start-->
+    <section class="about">
+      <div class="main">
+        <img src="static/img/Logos/ChoiceNepal.png" />
+        <div class="about-text">
+          <h2>About Us</h2>
+          <h5>Vehicle <span> Rental service provider</span></h5>
+          <p>
+            This company provides service of renting all kinds of vehicle in a single platform.
+          </p>
+          
+        </div>
+      </div>
+    </section>
+
+    <!---service section start-->
+    <div class="service">
+      <div class="title">
+        <h2>Our Services</h2>
+      </div>
+
+      <div class="box">
+        <div class="card">
+          <i class="fas fa-bars"></i>
+          <h5>plan your trip today</h5>
+          <div class="pra">
+            <p>
+              you can plan your trip vaccation with us by choosing the vehicles
+              you want.
+            </p>
+
+            <p style="text-align: center">
+              <a class="button" href="#">Read More</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="far fa-user"></i>
+          <h5>Types of vehicle we provide</h5>
+          <div class="pra">
+            <p>
+              Not only Car and bikes buts also we provide you full facility of
+              cycles, jeeps also
+            </p>
+
+            <p style="text-align: center">
+              <a class="button" href="#">Read More</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <i class="far fa-bell"></i>
+          <h5>More</h5>
+          <div class="pra">
+            <p>
+              Not only renting vehicles for trip but also you can rent different
+              load carriers to shift you load from one location to another
+              location in a reasonable price.
+            </p>
+
+            <p style="text-align: center">
+              <a class="button" href="#">Read More</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Choice Nepal</p>
+      <p>for more deail about us pls click the link below</p>
+      <div class="social">
+        <a
+          href="https://m.facebook.com/Vehicle-rental-services-105154272159521/?paipv=1"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+      </div>
+      <p class="end">CopyRight By Choice Nepal</p>
+    </footer>
+  </body>
+</html>

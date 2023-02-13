@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body {
+
+background-size: cover;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+div.Boxshadow {
+    box-shadow: 11px 8px 22px -6px rgba(4, 60, 241, 0.6);
+    transition: opacity 0.3s ease-in-out;
+}
+
+div.Boxshadow:hover {
+    box-shadow: 11px 9px 24px 0px rgba(222, 42, 207, 0.6);
+    transition: all 0.6s ease-in-out;
+}
+
+div#signin {
+    border: 2px solid rgba(212, 93, 24, 0.46);
+    border-radius: 16px;
+    margin: auto;
+}
+
+a:hover {
+    text-decoration: none;
+}

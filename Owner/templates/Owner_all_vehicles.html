@@ -1,0 +1,47 @@
+{%extends 'Only_owner_navbar.html'%} {% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}All Vehicles{% endblock %}</title>
+</head>
+
+<body>
+    {% block name %}{{owner.Owner_firstname}}{%endblock%} {% block pagecontent %}
+    <h1 class="display-3" style="text-align: center; fomt-style: bold;">Vehicles Details</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr style="color: Orange";>
+                <th scope="col">S.No</th>
+                <th scope="col">Vehicle Name</th>
+                <th scope="col">Company</th>
+                <th scope="col">Model</th>
+                <th scope="col">License Plate number</th>
+                {% comment %} <th scope="col">Uploaded by</th> {% endcomment %}
+                <th scope="col">Price (per day)</th>
+                <th scope="col">Vehicles Location</th>
+                <th scope="col">View Vehicle</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in vehicle %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{value.Vehicle_name}}</td>
+                <td>{{value.Vehicle_company}}</td>
+                <td>{{value.Vehicle_model}}</td>
+                <td>{{value.Vehicle_license_plate}}</td>
+                {% comment %} <td>{{value.Vehicle_uploaded_by}}</td> {% endcomment %}
+                <td>{{value.Vehicle_price}}</td>
+                    <td><a href="{% url 'vehicle_map' %}" class="fa fa-map-marker" style="color: #68f60c; font-weight: bolder;">Location</a></td>
+                <td><a href="{% url 'OwnerVehicleDetails' value.Vehicle_license_plate %}" target="_blank" style="color: #68f60c; font-weight: bolder;">view</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock pagecontent %}
+</body>
+
+</html>

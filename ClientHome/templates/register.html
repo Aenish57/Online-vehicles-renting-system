@@ -1,0 +1,146 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'img/Logos/TabTop2Logo.png' %}" type="image/gif" sizes="18x18">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+   
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="font-size: larger;">
+        <!--logo-->
+           <a href="/"><img class="rounded-circle" src="{% static 'img/Logos/ChoiceNepal.png' %}" height="60"></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+   
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                   <li class="nav-item">
+                       <a class="nav-link active" href="/" style=" color: #52ffff; ">Home</a>
+                   </li>
+               </ul>
+   
+           </div>
+    </nav>
+    <!-- navigaton bar end -->
+
+</head>
+
+<body style="background-image: url('{%static 'img/Logos/bk1.jpeg'%}');">
+    <div class="container ">
+        <div class="d-flex justify-content-enter h-100" role="form" id="signin" >
+            <div class="card">
+                <h3>Registration</h3>
+                <div class="card-body">
+                    <form action="/RegisterCustomer/" class="px-4 py-3" method="post" enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="firstname" style="color: #DFFF00; font-weight: bold;">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="customer_firstname" placeholder="Your First Name" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" style="color: #DFFF00; font-weight: bold;">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="customer_lastname" placeholder="Your Last Name" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob" style="color: #DFFF00; font-weight: bold;">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" name="customer_dob" placeholder="Date of birth" autocomplete="off" required>
+                        </div>
+                        
+                        <label style="color: #DFFF00; font-weight: bold;">Gender</label>
+                        <div class="form-row">
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="customer_gender" id="Male" value="Male" style="cursor: pointer;" checked>
+                                <label class="form-check-label" for="Male" style="color: #DFFF00; font-weight: bold;">
+                                Male
+                            </label>
+                            </div>
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="customer_gender" id="Female" value="Female" style="cursor: pointer;">
+                                <label class="form-check-label" for="Female" style="color: #DFFF00; font-weight: bold;">
+                                Female
+                            </label>
+                            </div>
+                            <div class="form-check px-4">
+                                <input class="form-check-input" type="radio" name="customer_gender" id="Other" value="Other" style="cursor: pointer;">
+                                <label class="form-check-label" for="Other" style="color: #DFFF00; font-weight: bold;">
+                                Other
+                            </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobileno" style="color: #DFFF00; font-weight: bold;">Mobile Number</label>
+                            <input type="text" class="form-control"  name="customer_mobileno" id="mobileno" placeholder="10 digits of number" autocomplete="off"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" style="color: #DFFF00; font-weight: bold;">Email address</label>
+                            <input type="email" class="form-control" name="customer_email" id="email" placeholder="email@example.com" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" style="color: yellow; font-weight: bold;">Password</label>
+                            <input type="password" class="form-control" name="customer_password" id="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" style="color: #DFFF00; font-weight: bold;">Address</label>
+                            <input type="text" class="form-control" name="customer_address" id="address" placeholder="Your Current Location" autocomplete="off" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="city" style="color: #DFFF00; font-weight: bold;">City</label>
+                                <input type="text" class="form-control" name="customer_city" id="city" autocomplete="off" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="country" style="color: #DFFF00; font-weight: bold;">Country</label>
+                                <input type="text" class="form-control" name="customer_country" id="country" autocomplete="off" required>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="terms and condition" value="terms" >
+                            <label for="terms" style="color: #DFFF00; font-weight: bold;"> I Agreed to<a href="/terms"> terms  condition of company</a>  </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputZip" style="color: #DFFF00; font-weight: bold;">Upload You License image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="customer_license" id="license" style="cursor: pointer;" required>
+                                <label class="custom-file-label" for="license" style="color: #FFBF00; font-weight: bold;">Choose file...</label>
+                            </div>
+                        </div>
+                        <input type="submit" value="RegisterCustomer" name="RegisterCustomer" class="btn btn-primary" />
+                        <div class="dropdown-divider"></div>
+                        <div class="px-4 mb-3" style="color: #DFFF00; font-weight: bold;">
+                            Already have account? <a href="/signin">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+            
+            
+            
+        </div>
+
+    </div>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+</body>
+
+</html>
